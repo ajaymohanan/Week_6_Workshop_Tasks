@@ -19,7 +19,7 @@ the following output within the main() function:
 After construction of tree: 1 2 3 4 5 6 7 8 9
 Upon exiting delete_tree() function: 1 2 3 4 5
 
-1. The definition of the delete_subtree() function contains errors. You must correct these 
+1. The definition of the delete_tree() function contains errors. You must correct these 
 errors and verify that the function provides the correct output.
 
 2. Prepare the C file Task_2.c for system testing by allowing it to receive the numbers to be inserted
@@ -42,14 +42,14 @@ struct node
 
 void insert_node(struct node** treePtr, int data);
 void inOrder(struct node* treePtr);
-void delete_subtree(struct node** treePtr);
+void delete_tree(struct node** treePtr);
 
 int main() {
 	int temp = 0;
 	struct node* treePtr = NULL;
     printf("Enter the value of the new data member: ");
 	scanf("%d", &temp);
-    while (temp >= 0)
+    while (temp > 0)
     {
         insert_node(&treePtr, temp);
         printf("Enter the value of the new data member: ");
@@ -58,7 +58,7 @@ int main() {
     printf("Initial version of binary tree:\n");
     inOrder(treePtr);
     printf("\n");
-    delete_subtree(&(treePtr->rightPtr));
+    delete_tree(&(treePtr->rightPtr));
     printf("Modified version of binary tree:\n");
     inOrder(treePtr);
     printf("\n");
@@ -97,9 +97,9 @@ void inOrder(struct node* treePtr)
 	}
 }
 
-void delete_subtree(struct node** treePtr)
+void delete_tree(struct node** treePtr)
 {
        free(*treePtr);
-	   delete_subtree(&((*treePtr)->leftPtr));
-       delete_subtree(&((*treePtr)->rightPtr));
+	   delete_tree(&((*treePtr)->leftPtr));
+       delete_tree(&((*treePtr)->rightPtr));
 }
