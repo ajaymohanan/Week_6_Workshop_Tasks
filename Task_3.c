@@ -43,7 +43,7 @@ int main()
     int i = 0;
 	printf("Enter the value of the new data member: ");
 	scanf("%d", &temp);
-	for (i = 0; temp >= 0; i++)
+	for (i = 0; temp > 0; i++)
 	{
 		if (startPtr == NULL)
 		{
