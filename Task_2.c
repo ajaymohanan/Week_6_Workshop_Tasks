@@ -100,6 +100,6 @@ void inOrder(struct node* treePtr)
 void delete_subtree(struct node** treePtr)
 {
        free(*treePtr);
-	   delete_subtree(&((*treePtr)->leftPtr));
+       delete_subtree(&((*treePtr)->leftPtr));
        delete_subtree(&((*treePtr)->rightPtr));
 }
