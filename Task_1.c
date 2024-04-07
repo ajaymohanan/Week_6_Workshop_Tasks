@@ -14,7 +14,7 @@ errors and verify that the function provides the correct output. In the process 
 function definition, you are only allowed to edit the existing lines of code in the function and 
 therefore, not allowed add any new lines of code for this purpose.
 
-2. Prepare the C file Task_1.c for system testing by allowing it to receive the string to filtered 
+2. Prepare the C file Task_1.c for system testing by allowing it to receive the string to be filtered 
 as a command line argument. Once the generated executable is called with the required command line 
 argument, only the filtered string must be printed onto the terminal.
 *******************************************************************************************************
