@@ -99,7 +99,11 @@ void inOrder(struct node* treePtr)
 
 void delete_tree(struct node** treePtr)
 {
-       free(*treePtr);
-	   delete_tree(&((*treePtr)->leftPtr));
-       delete_tree(&((*treePtr)->rightPtr));
+    if (*treePtr != NULL)
+	{
+	   delete_tree(&((*treePtr)->leftPtr)); // Look left
+       delete_tree(&((*treePtr)->rightPtr)); // Look right
+	   free(*treePtr); // Visit
+	   (*treePtr) = NULL; // Tell the tree that the node is deleted
+	}
 }
