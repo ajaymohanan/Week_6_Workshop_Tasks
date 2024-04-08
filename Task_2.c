@@ -5,10 +5,10 @@
 The main() function of the following C program initially constructs a binary search tree with each node 
 of type struct node and the data member in each node composed of a positive number greater than zero. 
 After the tree is constructed, the main() function calls a user-defined function delete_tree() that
-takes a pointer to the rootnode of the tree as input argument and deletes all the nodes in the tree. 
-However, in this case, the main() function utilizes the delete_tree() function to delete all the nodes
-in the right subtree of the rootnode and it does this by calling the function with the rightPtr member
-of the rootnode as input argument.
+takes the address of a pointer to the rootnode of the tree as input argument and deletes all the nodes 
+in the tree. However, in this case, the main() function utilizes the delete_tree() function to delete 
+all the nodes in the right subtree of the rootnode and it does this by calling the function with the 
+address of the rightPtr member of the rootnode as input argument.
 
 For instance, if data was inserted into this binary search tree in the following order: 
 5 7 3 6 4 2 8 1 9
