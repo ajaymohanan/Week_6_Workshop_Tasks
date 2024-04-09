@@ -32,6 +32,7 @@ the data in the printed output is delimited using one whitespace character.
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 struct node
 {
@@ -44,24 +45,27 @@ void insert_node(struct node** treePtr, int data);
 void inOrder(struct node* treePtr);
 void delete_tree(struct node** treePtr);
 
-int main() {
-	int temp = 0;
+int main(int argc, char* argv[]) 
+{
+	char* tokenPtr = NULL;
 	struct node* treePtr = NULL;
-    printf("Enter the value of the new data member: ");
-	scanf("%d", &temp);
-    while (temp > 0)
+    //printf("Enter the value of the new data member: ");
+	//scanf("%d", &temp);
+	tokenPtr = strtok(argv[1],",");
+    while (tokenPtr != NULL)
     {
-        insert_node(&treePtr, temp);
-        printf("Enter the value of the new data member: ");
-        scanf("%d", &temp);            
+        insert_node(&treePtr, atoi(tokenPtr));
+        //printf("Enter the value of the new data member: ");
+        //scanf("%d", &temp);         
+		tokenPtr = strtok(NULL,",");   
     }
-    printf("Initial version of binary tree:\n");
-    inOrder(treePtr);
-    printf("\n");
+    //printf("Initial version of binary tree:\n");
+    //inOrder(treePtr);
+    //printf("\n");
     delete_tree(&(treePtr->rightPtr));
-    printf("Modified version of binary tree:\n");
+    //printf("Modified version of binary tree:\n");
     inOrder(treePtr);
-    printf("\n");
+    //printf("\n");
 }
 
 
@@ -99,7 +103,11 @@ void inOrder(struct node* treePtr)
 
 void delete_tree(struct node** treePtr)
 {
-       free(*treePtr);
-	   delete_tree(&((*treePtr)->leftPtr));
-       delete_tree(&((*treePtr)->rightPtr));
+	if (*treePtr != NULL)
+	{
+	   delete_tree(&((*treePtr)->leftPtr)); //look left
+       delete_tree(&((*treePtr)->rightPtr)); //look right
+	   free(*treePtr); //visit node
+	   (*treePtr) = NULL; //inform the tree about node deletion
+	}
 }

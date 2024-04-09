@@ -39,13 +39,13 @@ int main()
 
 void filter_ascending(char* string_1)
 {
-    for (int i = 1; i < strlen(string_1); i++)
+    for (int i = 1; i < strlen(string_1); i++) //n-1 number of passes
     {
-        for (int j = 0; string_1[j+2] != '\0'; j++)
+        for (int j = 0; string_1[j+1] != '\0'; j++)
         {
             if (string_1[j] > string_1[j+1])
             {
-                for (int k = 0; string_1[k] != '\0'; k++)
+                for (int k = j+1; string_1[k] != '\0'; k++)
                 {
                     string_1[k] = string_1[k+1];
                 }
